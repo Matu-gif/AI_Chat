@@ -1,0 +1,24 @@
+・const updatedPrompts = [...storedPrompt, newUserMessage];は配列
+・const lastPrompt = await SearchAstra(updatedPrompts);で関数に渡される
+・const Prompt = updatedPrompts[1].content;で配列の一番め、つまりnewUserMessageを指定するから、userpromptが渡される。
+・エラーでundifinedが出る
+
+◉仮説と検証
+・最初の会話においては、配列-にちゃんと入っている
+・最初は0番目、2回目以降は1番目に入れるようにする
+
+startTransition(async () => {
+  const updatedPrompts = [...storedPrompt, newUserMessage];
+  
+  // 1. 検索結果（知識）を取得
+  const searchResults = await SearchAstra(updatedPrompts);
+  
+  // 2. 検索結果をテキストに変換（例: 取得した3件を合体させる）
+  const knowledgeContext = searchResults.map(r => r.text).join("\n");
+
+  // 3. 「知識」を添えてボットに聞く
+  // ※ ここで、単なる配列ではなく「指示」として渡すのがコツです
+  const reply = await askShotaBot(`以下の知識を参考に答えて：\n${knowledgeContext}\n\n質問：${newUserMessage.content}`);
+  
+  setPrompt(prev => [...prev, { role: "bot", content: reply }]);
+});
