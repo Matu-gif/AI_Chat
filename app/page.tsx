@@ -3,7 +3,7 @@
 import { useState, useTransition, } from "react";
 import { askShotaBot } from "./components/chat";
 import { SearchAstra } from "./lib/Astra/SerchAstra";
-import { generateNekoBiVoice } from '@/app/lib/character/voice';
+import { generateElevenVoice } from '@/app/lib/character/voice';
 import { useVoice } from '@/app/lib/character/speak';
 
 export default function Home() {
@@ -39,17 +39,6 @@ export default function Home() {
       <main className="bg-black text-white min-h-screen p-8">
         <div className="flex flex-col items-center gap-4 p-4">
           {/* キャラクター画像エリア */}
-          <div className="relative w-48 h-48 cursor-pointer">
-            <img
-              src={isSpeaking ? "/images/bi_open.png" : "/images/bi_close.png"}
-              alt={isSpeaking ? "猫使ビィ 開き" : "猫使ビィ 閉じ"}
-              className="absolute inset-0 w-full h-full transition-opacity duration-100"
-            />
-          </div>
-          
-
-          {/* 規約遵守のクレジット */}
-          <p className="text-[10px] text-gray-400">VOICEVOX:猫使ビィ</p>
         </div>
         {/* メッセージ表示エリア */}
         <div>

@@ -39,3 +39,30 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# --- 機密情報 (Copilotに読み込ませない) ---
+.env
+*.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- 依存パッケージ (巨大すぎてスキャン不要) ---
+node_modules/
+jspm_packages/
+
+# --- ビルド成果物 (自動生成されるため参照不要) ---
+dist/
+build/
+.expo/
+out/
+bin/
+obj/
+
+# --- ログ・キャッシュ ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
