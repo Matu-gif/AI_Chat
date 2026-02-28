@@ -1,7 +1,7 @@
 // app/lib/character/voice.ts
 'use server'
 
-export async function generateNekoBiVoice(reply: any) {
+export async function generateElevenVoice(reply: any) {
   const speakerId = 58; // 猫使ビィ（ノーマル）
   const voicevoxUrl = "http://localhost:50021";
 

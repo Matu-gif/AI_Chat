@@ -1,7 +1,7 @@
-"use client";
+"use server";
 
 import { useState } from "react";
-import { generateNekoBiVoice } from '@/app/lib/character/voice';
+import { generateElevenVoice } from '@/app/lib/character/voice';
 
 // 役割: 音声再生の状態管理と実行ロジックをカプセル化する
 export function useVoice() {
@@ -12,7 +12,7 @@ export function useVoice() {
         if (isSpeaking) return;
 
         try {
-            const base64 = await generateNekoBiVoice(reply);
+            const base64 = await generateElevenVoice(reply);
             const audioUrl = `data:audio/wav;base64,${base64}`;
             const audio = new Audio(audioUrl);
 
